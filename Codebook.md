@@ -1,8 +1,8 @@
-##Project Description
+## Project Description
 
 The purpose of this project is to demonstrate your ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
 
-##Requirement
+## Requirement
 
 Create one R script called run_analysis.R that does the following.
 
@@ -12,13 +12,13 @@ Uses descriptive activity names to name the activities in the data set
 Appropriately labels the data set with descriptive variable names.
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-###Collection of the raw data
+### Collection of the raw data
 
 Raw data is collected by downloading the below zip file to local R repository
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-###Information on Raw data
+### Information on Raw data
 
 The dataset includes the following files apart from others which we will use for our project:
 
@@ -38,7 +38,7 @@ The dataset includes the following files apart from others which we will use for
 
 * 'test/y_test.txt': Test labels.
 
-##Creating the tidy datafile
+## Creating the tidy datafile
 
 * 1. Download the files from the above link, unzip them and save them in your R working repository
 * 2. Prerequisite package for this project is "dplyr". Install the package if it is not already installed, and load the package.
@@ -57,9 +57,9 @@ The dataset includes the following files apart from others which we will use for
 * 15. Since the out put of above step will be matrix, transposed it for better view and converted it to a data frame
 * 16. View the final output of step 5 tidy data set.
 
-###README.md file which is placed in the repo explains in details on the transformation and logic used in the run_analysis.R
+### README.md file which is placed in the repo explains in details on the transformation and logic used in the run_analysis.R
 
-##Description of the variables in the final tidy data set.
+## Description of the variables in the final tidy data set.
 
 Dimensions of the dataset: 180 x 79
 * 79 columns represent mean of each variable of the measurements on the mean and standard deviation for each measurement.
@@ -136,4 +136,4 @@ Row names
 [176] "SITTING.30"            "STANDING.30"           "WALKING.30"            "WALKING_DOWNSTAIRS.30" "WALKING_UPSTAIRS.30" 
 
 
-####Notes on Observations: Row 1 is LAYING.1 stand for LAYING activity measurement average on subject 1, followed by remaining 5 different activities on subject 1. This makes first 6 rows. And rest follows this sequence.
+#### Notes on Observations: Row 1 is LAYING.1 stand for LAYING activity measurement average on subject 1, followed by remaining 5 different activities on subject 1. This makes first 6 rows. And rest follows this sequence.
