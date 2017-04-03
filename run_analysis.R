@@ -4,33 +4,24 @@
 # Load dplyr package
 suppressWarnings(suppressMessages(library(dplyr)))
 
-# Line 8-30 performs data read from several text files to R and 
-# convert the data frames to easy and readable data frames with tbl_df
+# Line 8-22 performs data read from several text files to R
 activity_labels <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/activity_labels.txt")
-activity_labels <- tbl_df(activity_labels)
 
 features <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/features.txt")
-features <- tbl_df(features)
 
 subject_test <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/test/subject_test.txt")
-subject_test <- tbl_df(subject_test)
 
 test_set <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/test/X_test.txt")
-test_set <- tbl_df(test_set)
 
 test_labels <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/test/y_test.txt")
-test_labels <- tbl_df(test_labels)
 
 subject_train <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/train/subject_train.txt")
-subject_train <- tbl_df(subject_train)
 
 training_set <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/train/X_train.txt")
-training_set <- tbl_df(training_set)
 
 training_labels <- read.table("S:/All about Data Science/Coursera/R/R working directory/UCI HAR Dataset/train/y_train.txt")
-training_labels <- tbl_df(training_labels)
 
-# Line 34-36, combine train and test datasets, subject and labels dataframes respectively
+# Line 25-27, combine train and test datasets, subject and labels dataframes respectively
 data_set <- rbind(training_set, test_set)
 data_subject <- rbind(subject_train, subject_test)
 data_labels <- rbind(training_labels, test_labels)
@@ -46,10 +37,8 @@ data_ms <- data_set[ , grep("mean()|std()", colnames(data_set))]
 # respectively from respective data frames
 data_ms <- mutate(data_ms, Activity = data_labels$V1, Subject = data_subject$V1)
 
-# Joined above data frame "data_ms" and "activity_lables" and 
-# converted the data frames to easy and readable data frames with tbl_df
+# Joined above data frame "data_ms" and "activity_lables"
 data_merge <- merge(data_ms, activity_labels, by.x = "Activity", by.y = "V1")
-data_merge <- tbl_df(data_merge)
 
 # Named descriptive activity names column as "Activity_name"
 # Re-arranged column order to move "Activity_name" and "Subject" to start and removed "Activity" column
@@ -71,3 +60,6 @@ tidy <- as.data.frame(t(tidy))
 # View the independent tidy data set with the average of each variable 
 # for each activity and each subject.
 View(tidy)
+
+# Write table to a text file
+write.table(tidy, file = "tidy.txt")
